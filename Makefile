@@ -1,2 +1,2 @@
-Mem:mem.cpp
-	gcc -o mem mem.cpp
+Mem:mem.c
+	gcc -o mem mem.c
