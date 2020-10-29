@@ -1,15 +1,22 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include<string.h>	
-#include<sys/mman.h>
-//#include<mem.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/mman.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <string.h>
+#include "mem.h"
 
 
+typedef enum {
+	false, true
+}bool;
+int m_error;
 struct memTrack {
 	int magic;
 	int size;
 };
+
+bool isInit = false;
 
 int mem_init(int size_of_region) {
 	// called on time by process using our routine
@@ -18,7 +25,10 @@ int mem_init(int size_of_region) {
 	int pageSize = getpagesize();
 	// in the coding env, the default pageSize is 4096
 //	printf("%d\n", pageSize);
-		
+	//handle the case that called more than once
+	if (isInit) {
+		m_error = E_BAD_ARGS;
+	}
 	// return 0 on success
 	// otherwise return -1 and set m_error
 	return 0;
