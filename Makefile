@@ -1,2 +1,2 @@
 Mem:mem.c
-	gcc -o mem mem.c -std=c99
+	gcc -o mem -g mem.c -std=c99
