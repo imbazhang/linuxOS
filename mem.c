@@ -79,7 +79,7 @@ void *mem_alloc(int size, int style)
         while (ptr != mem_end) { //iterator all the memory to find best place
             trackPtr = (struct memTrack*)ptr;
             if (trackPtr -> magic && trackPtr -> size >= size) {
-                if (targetLocation == NULL || trackPtr -> size < ((struct memTrack*)ptr) -> size)
+                if (targetLocation == NULL || trackPtr -> size < ((struct memTrack*)targetLocation) -> size)
                     targetLocation = ptr;
             }
             ptr = ptr + trackPtr -> size;
@@ -99,7 +99,7 @@ void *mem_alloc(int size, int style)
         while (ptr != mem_end) { //iterator all the memory to find best place
             trackPtr = (struct memTrack*)ptr;
             if (trackPtr -> magic && trackPtr -> size >= size) {
-                if (targetLocation == NULL || trackPtr -> size > ((struct memTrack*)ptr) -> size)
+                if (targetLocation == NULL || trackPtr -> size > ((struct memTrack*)targetLocation) -> size)
                     targetLocation = ptr;
             }
             ptr = ptr + trackPtr -> size;
