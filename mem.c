@@ -173,7 +173,7 @@ void mem_dump() {
 int main ()
 {
 //	void *tst = mmap();
-    int status = mem_init(4096);
+//    int status = mem_init(4096);
     mem_dump();
 
     char *p1, *p2, *p3, *p4, *p5;
